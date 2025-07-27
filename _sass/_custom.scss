@@ -1,0 +1,197 @@
+// Reset default styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Body and HTML setup for full viewport
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+// Canvas styles
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+// Custom styles
+.preview {
+    max-width: 1200px;
+    min-height: 320px;
+    padding: 0;
+}
+
+// Navigation containers
+.date-nav-container, .time-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+
+    .dg .c {
+        input[type="text"] {
+            width: 100% !important;
+            text-align: center;
+        }
+
+        .property-name {
+            width: 100% !important;
+        }
+    }
+}
+
+// Navigation button
+.nav-button {
+    background: #303030;
+    border: 1px solid #505050;
+    color: #fff;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 2px;
+
+    &:hover {
+        background: #404040;
+    }
+}
+
+// 3D wind arrows (used in main scene)
+.wind-arrow-3d {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 16px solid #00ddff;
+    transform-origin: center bottom;
+    pointer-events: none;
+    z-index: 1 !important; // Fix z-index so they don't appear above GUI
+    filter: none;
+    transition: transform 0.1s ease;
+}
+
+// Tooltip
+#tooltip {
+    position: absolute;
+    background-color: rgba(0, 20, 40, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Geist', system-ui, sans-serif;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+    white-space: nowrap;
+    border: 2px solid white;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    &.visible {
+        display: block;
+    }
+}
+
+// Split-screen layout - Desktop first
+#app-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: row; // Explicit desktop layout
+}
+
+#map-panel {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    background: #2a3f2a;
+    border-right: 2px solid #444;
+    border-bottom: none;
+}
+
+#canvas-panel {
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+#leaflet-map-main {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+// Wind data visualization on map
+.wind-cube-cell {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1.0 !important;
+    }
+}
+
+// Ensure dat.GUI has higher z-index
+.dg.ac {
+    z-index: 9999 !important;
+}
+
+// Mobile responsive layout - Most specific, should override everything
+@media screen and (max-width: 768px) {
+    #app-container {
+        flex-direction: column !important;
+        height: 100vh !important;
+    }
+    
+    #map-panel {
+        width: 100% !important;
+        height: 50% !important;
+        border-right: none !important;
+        border-bottom: 2px solid #444 !important;
+    }
+    
+    #canvas-panel {
+        width: 100% !important;
+        height: 50% !important;
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+    
+    #leaflet-map-main {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+// Tablet responsive layout
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    #app-container {
+        flex-direction: column !important;
+    }
+    
+    #map-panel {
+        width: 100% !important;
+        height: 40% !important;
+        border-right: none !important;
+        border-bottom: 2px solid #444 !important;
+    }
+    
+    #canvas-panel {
+        width: 100% !important;
+        height: 60% !important;
+    }
+}

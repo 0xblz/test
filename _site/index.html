@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - 2025</title>
+    <meta name="description" content="2025">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+</head>
+<body>
+    <div id="app-container">
+  <div id="map-panel">
+    <div id="leaflet-map-main"></div>
+  </div>
+  <div id="canvas-panel">
+    <canvas id="three-canvas"></canvas>
+  </div>
+</div>
+
+<div id="leaflet-map" style="width: 512px; height: 512px; position: absolute; top: -1000px; left: -1000px; visibility: hidden;"></div>
+    
+    
+        <!-- Three.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- OrbitControls -->
+        <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+        <!-- BufferGeometryUtils -->
+        <script src="https://unpkg.com/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
+        <!-- dat.GUI -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <!-- Modular JavaScript files in dependency order -->
+        <script src="/assets/js/constants.js"></script>
+        <script src="/assets/js/state-coordinates.js"></script>
+        <script src="/assets/js/utils.js"></script>
+        <script src="/assets/js/wind-calculator.js"></script>
+        <script src="/assets/js/wind-generator.js"></script>
+        <script src="/assets/js/minimap-manager.js"></script>
+        <script src="/assets/js/scene-manager.js"></script>
+        <script src="/assets/js/map-manager.js"></script>
+        <script src="/assets/js/ui-manager.js"></script>
+        <script src="/assets/js/event-handlers.js"></script>
+        <script src="/assets/js/animation-loop.js"></script>
+        <script src="/assets/js/app.js"></script>
+    
+</body>
+</html> 
