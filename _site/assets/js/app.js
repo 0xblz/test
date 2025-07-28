@@ -9,9 +9,6 @@ function initApp() {
   UIManager.init();
   EventHandlers.init();
   
-  // Initialize minimap if elements exist (optional feature)
-  MiniMapManager.init();
-  
   // Initialize splitter for resizable panels
   Splitter.init();
   

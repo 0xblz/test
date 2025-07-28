@@ -113,17 +113,11 @@ const UIManager = {
       Config.settings[positionKey] = Utils.getRandomPosition();
     }
     WindGenerator.regenerate();
-    if (AppState.selectedFlightLevel !== null) {
-      MiniMapManager.update();
-    }
   },
 
   onHurricaneIntensityChange() {
     if (Config.settings.hurricaneActive) {
       WindGenerator.regenerate();
-      if (AppState.selectedFlightLevel !== null) {
-        MiniMapManager.update();
-      }
     }
   },
 
@@ -150,10 +144,6 @@ const UIManager = {
     AppState.currentTime = originalTime;
     AppState.currentDate = originalDate;
     TimeControls.updateDisplay();
-    
-    if (AppState.selectedFlightLevel !== null) {
-      setTimeout(() => MiniMapManager.update(), 50);
-    }
   },
 
   updateCubeOpacity() {
@@ -185,10 +175,6 @@ const TimeControls = {
     AppState.currentDate = newDate;
     this.updateDisplay();
     WindGenerator.regenerate();
-    
-    if (AppState.selectedFlightLevel !== null) {
-      MiniMapManager.update();
-    }
   },
 
   changeTime(hours) {
@@ -206,10 +192,6 @@ const TimeControls = {
     
     this.updateDisplay();
     WindGenerator.regenerate();
-    
-    if (AppState.selectedFlightLevel !== null) {
-      MiniMapManager.update();
-    }
   },
 
   createDateController(folder) {
@@ -269,7 +251,5 @@ const StateManager = {
     
     MapManager.updateState(stateData);
     WindGenerator.regenerate();
-    MiniMapManager.update();
-    MiniMapManager.updateGroundPlane();
   }
 }; 

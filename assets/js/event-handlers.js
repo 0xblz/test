@@ -28,7 +28,6 @@ const EventHandlers = {
   },
 
   onMouseMove(event) {
-    if (AppState.miniMap.isResizing) return;
     this.updateMousePosition(event.clientX, event.clientY);
     this.handleHover(event);
   },
@@ -45,7 +44,7 @@ const EventHandlers = {
   },
 
   onMouseClick(event) {
-    if (AppState.miniMap.isResizing || AppState.isDragging) return;
+    if (AppState.isDragging) return;
     this.updateMousePosition(event.clientX, event.clientY);
     this.handleClick();
   },

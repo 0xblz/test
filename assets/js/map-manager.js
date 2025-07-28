@@ -220,8 +220,6 @@ const MapManager = {
       AppState.groundPlane.material.map = AppState.mapTexture;
       AppState.groundPlane.material.needsUpdate = true;
     }
-    
-    MiniMapManager.updateGroundPlane();
   },
 
   addWindCubesToMap(flightLevel = null) {
@@ -397,7 +395,5 @@ const RegionManager = {
     Config.settings.region = regionName;
     MapManager.updateRegion(regionName);
     WindGenerator.regenerate();
-    MiniMapManager.update();
-    MiniMapManager.updateGroundPlane();
   }
 }; 

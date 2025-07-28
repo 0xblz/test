@@ -114,7 +114,6 @@ const SelectionManager = {
     });
     
     this.updateArrowVisibility();
-    MiniMapManager.update();
     MapManager.addWindCubesToMap();
   },
 
@@ -128,7 +127,6 @@ const SelectionManager = {
     });
     
     this.updateArrowVisibility();
-    MiniMapManager.update();
     MapManager.addWindCubesToMap();
   },
 
@@ -170,7 +168,6 @@ const SelectionManager = {
   toggleWindArrows(showArrows) {
     Config.settings.showWindArrows = showArrows;
     this.updateArrowVisibility();
-    MiniMapManager.updateArrowVisibility();
     MapManager.addWindCubesToMap();
   }
 };

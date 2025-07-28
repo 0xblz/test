@@ -39,9 +39,5 @@ const AppState = {
   selectedFlightLevel: null, selectedCubes: [], isDragging: false, mouseDownPosition: { x: 0, y: 0 },
   gui: null, tooltip: null, leafletMap: null, mapCanvas: null, mapContext: null, mapTexture: null,
   windDataBounds: null, windMapMarkers: [],
-  currentDate: new Date(), currentTime: { hour: new Date().getHours(), minute: new Date().getMinutes() },
-  miniMap: {
-    scene: null, camera: null, renderer: null, canvas: null, container: null, groundPlane: null,
-    cubes: [], arrows: [], isResizing: false, resizeStartSize: { width: 0, height: 0 }, resizeStartMouse: { x: 0, y: 0 }
-  }
+  currentDate: new Date(), currentTime: { hour: new Date().getHours(), minute: new Date().getMinutes() }
 }; 
