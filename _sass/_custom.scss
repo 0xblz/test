@@ -76,22 +76,40 @@ canvas {
     transition: transform 0.1s ease;
 }
 
-// Tooltip
+#demo-label {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  z-index: 10000;
+  pointer-events: none;
+  user-select: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 #tooltip {
-    position: absolute;
-    background-color: rgba(0, 20, 40, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-family: 'Geist', system-ui, sans-serif;
-    pointer-events: none;
-    z-index: 1000;
-    display: none;
-    white-space: nowrap;
-    border: 2px solid white;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Geist', system-ui, sans-serif;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+  white-space: nowrap;
+  border: 2px solid white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
     &.visible {
         display: block;

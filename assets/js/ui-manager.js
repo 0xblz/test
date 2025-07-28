@@ -42,6 +42,17 @@ const UIManager = {
     AppState.gui = new dat.GUI();
     AppState.gui.width = 300;
     
+    // Add status display at the top
+    const statusController = AppState.gui.add({ status: 'Simulated Data' }, 'status')
+      .name('Status')
+      .listen();
+    
+    // Make the status field read-only
+    const statusInput = statusController.domElement.querySelector('input');
+    statusInput.readOnly = true;
+    statusInput.style.opacity = '0.7';
+    statusInput.style.cursor = 'default';
+    
     AppState.gui.add(Config.settings, 'state', Object.keys(StateCoordinates))
       .name('US State')
       .onChange(StateManager.updateState.bind(StateManager));
@@ -53,8 +64,6 @@ const UIManager = {
     this.createOptionsFolder();
     this.createSimulationsFolder();
     this.createTimeFolder();
-    
-    AppState.gui.add({ randomizeWind: () => this.randomizeWind() }, 'randomizeWind').name('Randomize Wind');
   },
 
   createOptionsFolder() {
@@ -71,8 +80,6 @@ const UIManager = {
     optionsFolder.add(Config.settings, 'cubeOpacity', 0.01, 0.3)
       .name('Cube Opacity')
       .onChange(this.updateCubeOpacity.bind(this));
-    
-    optionsFolder.open();
   },
 
   createSimulationsFolder() {
@@ -90,14 +97,14 @@ const UIManager = {
       .name('Hurricane Category')
       .onChange(this.onHurricaneIntensityChange.bind(this));
     
-    simulationsFolder.open();
+    simulationsFolder.add({ randomizeWind: () => this.randomizeWind() }, 'randomizeWind')
+      .name('Randomize Wind');
   },
 
   createTimeFolder() {
     const timeFolder = AppState.gui.addFolder('Date & Time');
     TimeControls.createDateController(timeFolder);
     TimeControls.createTimeController(timeFolder);
-    timeFolder.open();
   },
 
   onStormToggle(stormType, value) {
