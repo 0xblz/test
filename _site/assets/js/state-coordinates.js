@@ -8,7 +8,7 @@ const StateCoordinates = {
   'Colorado': { center: [39.059811, -105.311104], zoom: 7 },
   'Connecticut': { center: [41.597782, -72.755371], zoom: 8 },
   'Delaware': { center: [39.318523, -75.507141], zoom: 8 },
-  'Florida': { center: [27.766279, -81.686783], zoom: 7 },
+  'Florida': { center: [27.766279, -81.686783], zoom: 6 },
   'Georgia': { center: [33.040619, -83.643074], zoom: 7 },
   'Hawaii': { center: [21.094318, -157.498337], zoom: 7 },
   'Idaho': { center: [44.240459, -114.478828], zoom: 6 },
