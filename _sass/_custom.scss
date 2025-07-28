@@ -100,37 +100,67 @@ canvas {
 
 // Split-screen layout - Desktop first
 #app-container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    flex-direction: row; // Explicit desktop layout
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: row; // Explicit desktop layout
 }
 
 #map-panel {
-    width: 50%;
-    height: 100%;
-    position: relative;
-    background: #2a3f2a;
-    border-right: 2px solid #444;
-    border-bottom: none;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  background: #2a3f2a;
+  border-bottom: none;
+  min-width: 200px;
+}
+
+#splitter {
+  width: 4px;
+  background: #444;
+  cursor: ew-resize;
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+#splitter:hover {
+  background: #666;
+}
+
+#splitter::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 30px;
+  background: #888;
+  border-radius: 1px;
 }
 
 #canvas-panel {
-    width: 50%;
-    height: 100%;
-    position: relative;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    canvas {
-        width: 100% !important;
-        height: 100% !important;
-    }
+#canvas-panel canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
 }
 
 #leaflet-map-main {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 // Wind data visualization on map
@@ -149,32 +179,52 @@ canvas {
 
 // Mobile responsive layout - Most specific, should override everything
 @media screen and (max-width: 768px) {
-    #app-container {
-        flex-direction: column !important;
-        height: 100vh !important;
-    }
-    
-    #map-panel {
-        width: 100% !important;
-        height: 50% !important;
-        border-right: none !important;
-        border-bottom: 2px solid #444 !important;
-    }
-    
-    #canvas-panel {
-        width: 100% !important;
-        height: 50% !important;
-
-        canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-    }
-    
-    #leaflet-map-main {
-        width: 100% !important;
-        height: 100% !important;
-    }
+  #app-container {
+    flex-direction: column !important;
+    height: 100vh !important;
+  }
+  
+  #map-panel {
+    width: 100% !important;
+    height: 50% !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    min-height: 150px !important;
+  }
+  
+  #splitter {
+    width: 100% !important;
+    height: 4px !important;
+    cursor: ns-resize !important;
+    background: #444 !important;
+  }
+  
+  #splitter:hover {
+    background: #666 !important;
+  }
+  
+  #splitter::after {
+    width: 30px !important;
+    height: 2px !important;
+    top: 50% !important;
+    left: 50% !important;
+  }
+  
+  #canvas-panel {
+    width: 100% !important;
+    flex: 1 !important;
+    min-height: 150px !important;
+  }
+  
+  #leaflet-map-main {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  #canvas-panel canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 // Tablet responsive layout

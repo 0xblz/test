@@ -24,7 +24,8 @@ const SceneManager = {
 
   setupRenderer() {
     const canvas = document.getElementById('three-canvas');
-    const rect = canvas.getBoundingClientRect();
+    const canvasPanel = document.getElementById('canvas-panel');
+    const rect = canvasPanel.getBoundingClientRect();
     AppState.renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     AppState.renderer.setSize(rect.width, rect.height);
     AppState.renderer.setPixelRatio(window.devicePixelRatio);
