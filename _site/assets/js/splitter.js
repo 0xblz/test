@@ -28,12 +28,16 @@ const Splitter = {
     const mapPanel = document.getElementById('map-panel');
     const isMobile = window.innerWidth <= 768;
     
+    console.log('Starting drag - isMobile:', isMobile, 'window width:', window.innerWidth);
+    
     if (isMobile) {
       this.startY = event.type === 'mousedown' ? event.clientY : event.touches[0].clientY;
       this.startMapHeight = mapPanel.offsetHeight;
+      console.log('Mobile drag start - startY:', this.startY, 'startMapHeight:', this.startMapHeight);
     } else {
       this.startX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
       this.startMapWidth = mapPanel.offsetWidth;
+      console.log('Desktop drag start - startX:', this.startX, 'startMapWidth:', this.startMapWidth);
     }
     
     document.body.style.userSelect = 'none';
@@ -60,10 +64,15 @@ const Splitter = {
       const minHeight = 150;
       const maxHeight = containerHeight - minHeight - 4; // 4px for splitter
       
+      console.log('Mobile drag - currentY:', currentY, 'deltaY:', deltaY, 'newHeight:', newHeight, 'containerHeight:', containerHeight);
+      
       if (newHeight >= minHeight && newHeight <= maxHeight) {
         const heightPercentage = (newHeight / containerHeight) * 100;
-        mapPanel.style.height = `${heightPercentage}%`;
+        console.log('Setting height to:', heightPercentage + '%');
+        mapPanel.style.setProperty('height', `${heightPercentage}%`, 'important');
         // Canvas panel will flex to fill remaining space
+      } else {
+        console.log('Height out of bounds - min:', minHeight, 'max:', maxHeight, 'attempted:', newHeight);
       }
     } else {
       // Horizontal resizing for desktop
@@ -76,10 +85,15 @@ const Splitter = {
       const minWidth = 200;
       const maxWidth = containerWidth - minWidth - 4; // 4px for splitter
       
+      console.log('Desktop drag - currentX:', currentX, 'deltaX:', deltaX, 'newWidth:', newWidth, 'containerWidth:', containerWidth);
+      
       if (newWidth >= minWidth && newWidth <= maxWidth) {
         const widthPercentage = (newWidth / containerWidth) * 100;
-        mapPanel.style.width = `${widthPercentage}%`;
+        console.log('Setting width to:', widthPercentage + '%');
+        mapPanel.style.setProperty('width', `${widthPercentage}%`, 'important');
         // Canvas panel will flex to fill remaining space
+      } else {
+        console.log('Width out of bounds - min:', minWidth, 'max:', maxWidth, 'attempted:', newWidth);
       }
     }
     
