@@ -107,6 +107,12 @@ const EventHandlers = {
     AppState.raycaster.setFromCamera(AppState.mouse, AppState.camera);
     const intersects = AppState.raycaster.intersectObjects(AppState.windCubes);
     
+    // Debug raycasting
+    if (AppState.windCubes.length === 0) {
+      console.warn('No wind cubes available for raycasting');
+      return;
+    }
+    
     if (intersects.length > 0) {
       const hoveredCube = intersects[0].object;
       console.log('Hovered cube - yLevel:', hoveredCube.userData.yLevel, 'position.y:', hoveredCube.position.y, 'flightLevel:', hoveredCube.userData.flightLevel);

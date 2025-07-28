@@ -94,9 +94,20 @@ const WindGenerator = {
   },
 
   regenerate() {
+    console.log('Regenerating wind grid...');
+    console.log('Cubes before regeneration:', AppState.windCubes.length);
+    
     this.generateGrid();
+    
+    console.log('Cubes after regeneration:', AppState.windCubes.length);
+    
     if (AppState.selectedFlightLevel !== null && typeof SelectionManager !== 'undefined') {
       SelectionManager.selectFlightLevel(AppState.selectedFlightLevel);
+    }
+    
+    // Force a render to ensure everything is updated
+    if (AppState.renderer && AppState.scene && AppState.camera) {
+      AppState.renderer.render(AppState.scene, AppState.camera);
     }
   }
 }; 
