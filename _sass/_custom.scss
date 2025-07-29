@@ -20,11 +20,12 @@ canvas {
     height: 100%;
 }
 
-// Custom styles
-.preview {
-    max-width: 1200px;
-    min-height: 320px;
-    padding: 0;
+.dg {
+  font: 12px "Geist", system-ui, sans-serif !important;
+}
+
+.dg .cr.string input[type=text] {
+  font: 12px "Geist", system-ui, sans-serif !important;
 }
 
 // Navigation containers
